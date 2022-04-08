@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+<<<<<<< HEAD
 import { EventModule } from './events/event.module';
 import { UserModule } from './users/user.module';
 import { ConfigModule } from '@nestjs/config';
@@ -23,6 +24,15 @@ import { AuthModule } from './auth/auth.module';
     UserModule,
     MediaModule,
     AuthModule
+=======
+import { BookModule } from './books/book.module';
+import { DatabaseModule } from './database/database.module';
+
+@Module({
+  imports: [
+    DatabaseModule,
+    BookModule
+>>>>>>> b11d01109ee7d263f0c2e4085ac21992208443eb
   ],
   controllers: [],
   providers: []

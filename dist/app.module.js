@@ -8,17 +8,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
+<<<<<<< HEAD
 const event_module_1 = require("./events/event.module");
 const user_module_1 = require("./users/user.module");
 const config_1 = require("@nestjs/config");
 const typeorm_1 = require("@nestjs/typeorm");
 const media_module_1 = require("./medias/media.module");
 const auth_module_1 = require("./auth/auth.module");
+=======
+const book_module_1 = require("./books/book.module");
+const database_module_1 = require("./database/database.module");
+>>>>>>> b11d01109ee7d263f0c2e4085ac21992208443eb
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     common_1.Module({
         imports: [
+<<<<<<< HEAD
             config_1.ConfigModule.forRoot(),
             typeorm_1.TypeOrmModule.forRoot({
                 type: process.env.TYPEORM_CONNECTION,
@@ -34,6 +40,10 @@ AppModule = __decorate([
             user_module_1.UserModule,
             media_module_1.MediaModule,
             auth_module_1.AuthModule
+=======
+            database_module_1.DatabaseModule,
+            book_module_1.BookModule
+>>>>>>> b11d01109ee7d263f0c2e4085ac21992208443eb
         ],
         controllers: [],
         providers: []
