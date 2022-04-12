@@ -12,10 +12,22 @@ export class MediaService {
     constructor(
         @InjectRepository(Media)
         private readonly mediaRepository: Repository<Media>
-    ){}
+    ) { }
 
     async obterTodos(): Promise<Media[]> {
-        return await this.mediaRepository.find();
+        const axios = require('axios')
+        const medias = await this.mediaRepository.find();
+
+        try {
+            medias.map(async media => {
+                let response = await axios.get(media.link)
+                console.log(response.data.body)
+            })
+        } catch (error) {
+            throw new AssertionError(error)
+        }
+
+        return medias
     }
 
     async obterUm(conditions: FindConditions<Media>, options?: FindOneOptions<Media>): Promise<Media | undefined> {
@@ -31,10 +43,10 @@ export class MediaService {
     async criar(mediaCreate: CreateUpdateMediaDto) {
         const media = this.mediaRepository.create(mediaCreate)
         return await this.mediaRepository.save(media)
-    } 
+    }
 
-    async alterar(id:string, mediaUpdate: CreateUpdateMediaDto) {
-
+    async alterar(id: string, mediaUpdate: CreateUpdateMediaDto) {
+997006456
         try {
             const media = await this.obterUm({ id })
             this.mediaRepository.merge(media, mediaUpdate)
@@ -43,11 +55,11 @@ export class MediaService {
         {
             throw new AssertionError({ message: "Error at updating event" })
         }
-        
+
     }
 
     async apagar(id: string) {
-        await this.mediaRepository.findOneOrFail({id})
-        this.mediaRepository.softDelete({id})
+        await this.mediaRepository.findOneOrFail({ id })
+        this.mediaRepository.softDelete({ id })
     }
 }

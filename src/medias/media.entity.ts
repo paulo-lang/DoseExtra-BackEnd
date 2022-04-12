@@ -10,6 +10,10 @@ export class Media{
     @Column()
     link: string;
 
+    @IsNotEmpty({message: "Tipo é obrigatório"})
+    @Column()
+    type: string;
+    
     @CreateDateColumn()
     createdAt: string;
 

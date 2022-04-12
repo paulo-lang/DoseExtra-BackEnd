@@ -9,6 +9,6 @@ async function bootstrap() {
       transform: true
     }))
   useContainer(app.select(AppModule), { fallbackOnErrors: true })
-  await app.listen(3000);
+  await app.listen(3333);
 }
 bootstrap();
