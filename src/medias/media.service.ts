@@ -15,19 +15,7 @@ export class MediaService {
     ) { }
 
     async obterTodos(): Promise<Media[]> {
-        const axios = require('axios')
-        const medias = await this.mediaRepository.find();
-
-        try {
-            medias.map(async media => {
-                let response = await axios.get(media.link)
-                console.log(response.data.body)
-            })
-        } catch (error) {
-            throw new AssertionError(error)
-        }
-
-        return medias
+        return await this.mediaRepository.find();
     }
 
     async obterUm(conditions: FindConditions<Media>, options?: FindOneOptions<Media>): Promise<Media | undefined> {
@@ -46,7 +34,7 @@ export class MediaService {
     }
 
     async alterar(id: string, mediaUpdate: CreateUpdateMediaDto) {
-997006456
+        997006456
         try {
             const media = await this.obterUm({ id })
             this.mediaRepository.merge(media, mediaUpdate)
