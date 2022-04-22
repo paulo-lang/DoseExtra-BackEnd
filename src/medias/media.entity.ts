@@ -1,5 +1,5 @@
 import { IsNotEmpty } from 'class-validator';
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, DeleteDateColumn } from 'typeorm';
 
 @Entity({name: 'medias'})
 export class Media{
@@ -19,4 +19,7 @@ export class Media{
 
     @CreateDateColumn()
     updatedAt: string;
+
+    @DeleteDateColumn()
+    deletedAt: string;
 }

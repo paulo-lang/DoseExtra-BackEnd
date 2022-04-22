@@ -51,7 +51,7 @@ export class MediaService {
     }
 
     async apagar(id: string) {
-        await this.mediaRepository.findOneOrFail({ id })
-        this.mediaRepository.softDelete({ id })
+   //await this.mediaRepository.findOneOrFail({ id })
+        await this.mediaRepository.softDelete({ id })
     }
 }
