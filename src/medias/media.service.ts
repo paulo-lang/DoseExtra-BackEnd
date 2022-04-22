@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { AssertionError } from "assert";
 import { NotFoundError } from "rxjs";
-import { FindConditions, FindOneOptions, Repository } from "typeorm";
+import { FindConditions, FindManyOptions, FindOneOptions, Repository } from "typeorm";
 import { CreateUpdateMediaDto } from "./dto/create-update-media.dto";
 import { Media } from "./media.entity";
 
@@ -16,6 +16,10 @@ export class MediaService {
 
     async obterTodos(): Promise<Media[]> {
         return await this.mediaRepository.find();
+    }
+
+    async obterPorTipo(type: string): Promise<Media[]> {
+        return await this.mediaRepository.find({where: { type: type }})
     }
 
     async obterUm(conditions: FindConditions<Media>, options?: FindOneOptions<Media>): Promise<Media | undefined> {

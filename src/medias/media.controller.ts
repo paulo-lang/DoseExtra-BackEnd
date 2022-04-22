@@ -15,6 +15,11 @@ export class MediaController {
         return this.mediaService.obterTodos();
     }
 
+    @Get('/type/:type')
+    async obterPorTipo(@Param('type') type:string): Promise<Media[]> {
+        return this.mediaService.obterPorTipo(type);
+    }
+
     @Get(':id')
     async obterUm(@Param('id', new ParseIntPipe()) id:string): Promise<Media> {
         return this.mediaService.obterUm({id});
